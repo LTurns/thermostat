@@ -8,7 +8,7 @@ describe('Thermostat', function() {
 
   it('starts at 20 degrees', function() {
     expect(thermostat.getCurrentTemperature()).toEqual(20);
-  }); 
+  });
 
   it('increases temperature with up', function() {
     thermostat.up();
@@ -91,4 +91,3 @@ describe('displaying usage levels', function() {
   });
 });
 });
-

@@ -3,28 +3,41 @@
   <head>
     <title>Thermostat</title>
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
   </head>
   <body>
-    <section>
+    <section class="temperature">
+      <div class="current_temp">
+        <form id="select-city">
+          <input id="current-city" type="text" placeholder="Enter a city"></input>
+          <input id="button" type="submit"></input>
+        </form>
+       <center>
       <h1 id="temperature"></h1>
       <h1>Current temperature: <span id="current-temperature">20</span></h1>
-      <form id="select-city">
-        <input id="current-city" type="text" placeholder="Enter a city"></input>
-        <input type="submit"></input>
-      </form>
       </select>
       <p>
+        power saving mode is <span id="power-saving-status">on</span><br>
+        <button id="powersaving-on">PSM on</button>
+        <button id="powersaving-off">PSM off</button>
         <button id="temperature-up">+</button>
         <button id="temperature-down">-</button>
         <button id="temperature-reset">reset</button>
-        power saving mode is <span id="power-saving-status">on</span>
-        <button id="powersaving-on">PSM on</button>
-        <button id="powersaving-off">PSM off</button>
       </p>
+    </center>
+  </div>
     </section>
     <script src="src/thermostat.js"></script>
     <script src="js/jquery.js"></script>
     <script src="interface.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <script>
+      particlesJS.load('particles-js', 'particles.json', function(){
+        console.log('particles.json loaded...');
+      });
+    </script>
     <script>
 
     $(document).ready(function() {
@@ -62,8 +75,8 @@
     $('#temperature').text(thermostat.temperature);
     $('#temperature').attr('class', thermostat.energyUsage());
     }
-    
-  
+
+
     $.get('http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=a3d9eb01d4de82b9b8d0849ef604dbed&units=metric', function(data) {
   console.log(data.main.temp);
 });
@@ -80,4 +93,3 @@ $('#select-city').submit(function(event) {
     </script>
   </body>
 </html>
-  
